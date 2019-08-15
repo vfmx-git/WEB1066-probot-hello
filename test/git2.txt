@@ -1,0 +1,73 @@
+https://www.linux.com/learn/how-run-your-own-git-server
+
+HOW TO RUN YOUR OWN GIT SERVER
+-------------------------------------------------------
+
+apt install -y git-core
+
+useradd git
+passwd git
+
+ssh-keygen -t rsa
+It will ask you to provide the location for storing the key, just hit Enter to use the default location.
+
+cat ~/.ssh/id_rsa.pub | ssh git@remote-server "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+
+Now ssh into the server and create a project directory for Git. You can use the desired path for the repo.
+git@server:~ $ mkdir -p /home/swapnil/project-1.git
+git@server:~ $ mkdir -p /home/swapnil/project-1.git
+
+Then create an empty repo:
+git init --bare
+Initialized empty Git repository in /home/swapnil/project-1.git
+
+
+We now need to create a Git repo on the local machine.
+mkdir -p /home/swapnil/git/project
+cd /home/swapnil/git/project
+
+Now create the files that you need for the project in this directory. Stay in this directory and initiate git:
+git init
+Initialized empty Git repository in /home/swapnil/git/project
+
+Now add files to the repo:
+git add .
+Now every time you add a file or make changes you have to run the add command above. You also need to write a commit message with every change in a file. The commit message basically tells what changes were made.
+git commit -m "message" -a
+
+If you made changes to only one you can specify the name of that file instead of using '-a'.
+git commit -m "message" GoT.txt
+
+Now we have to push these changes to the server so the work is accessible over the Internet and you can collaborate with other team members.
+git remote add origin ssh://git@remote-server/repo-<wbr< a="">>path-on-server..git
+
+Now you can push or pull changes between the server and local machine using the 'push' or 'pull' option:
+git push origin master
+
+If there are other team members who want to work with the project they need to clone the repo on the server to their local machine:
+git clone git@remote-server:/home/swapnil/project.git
+
+Here /home/swapnil/project.git is the project path on the remote server, exchange the values for your own server.
+Then change directory on the local machine (exchange project with the name of project on your server):
+
+cd /project
+Now they can edit files, write commit change messages and then push them to the server:
+
+git commit -m 'corrections in GoT.txt story' -a
+And then push changes:
+git push origin master
+
+On laptop: mount /dev/sda4 /stor1
+and from remote:
+git clone user2@192.168.11.196:/stor1/git
+
+
+
+
+
+
+
+
+
+
+
