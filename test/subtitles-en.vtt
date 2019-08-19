@@ -1,0 +1,457 @@
+WEBVTT
+
+1
+00:00:04.070 --> 00:00:07.695
+Welcome to our course on Continuous Integration.
+
+2
+00:00:07.695 --> 00:00:12.120
+You're taking this course probably because you're already acutely
+
+3
+00:00:12.120 --> 00:00:17.790
+aware that software development and in this day and age is highly complex.
+
+4
+00:00:17.790 --> 00:00:21.270
+You often have large teams of developers working on
+
+5
+00:00:21.270 --> 00:00:24.630
+small parts of an overall software project.
+
+6
+00:00:24.630 --> 00:00:26.610
+These teams are submitting
+
+7
+00:00:26.610 --> 00:00:31.830
+new and revised bits of code multiple multiple times throughout a work day,
+
+8
+00:00:31.830 --> 00:00:36.225
+and in the case of especially large international organizations,
+
+9
+00:00:36.225 --> 00:00:38.545
+sometimes around the clock.
+
+10
+00:00:38.545 --> 00:00:42.200
+If you look at some of the major platforms on the Internet,
+
+11
+00:00:42.200 --> 00:00:44.510
+the Amazons, YouTubes, Googles,
+
+12
+00:00:44.510 --> 00:00:46.120
+Facebooks of the world,
+
+13
+00:00:46.120 --> 00:00:51.710
+code is being worked on and combined constantly to improve those platforms.
+
+14
+00:00:51.710 --> 00:00:58.130
+There's one thing that's preventing all of this coding effort devolving into utter chaos,
+
+15
+00:00:58.130 --> 00:01:00.580
+and that's continuous integration.
+
+16
+00:01:00.580 --> 00:01:04.270
+Hello. My name is Edward Raigosa,
+
+17
+00:01:04.270 --> 00:01:06.740
+and I'm a principal software engineer
+
+18
+00:01:06.740 --> 00:01:10.120
+working on continuous integration solutions at GitHub.
+
+19
+00:01:10.120 --> 00:01:16.265
+I was first introduced into continuous integration systems at scale over 15 years ago.
+
+20
+00:01:16.265 --> 00:01:18.500
+While working in various roles,
+
+21
+00:01:18.500 --> 00:01:23.510
+I have had the opportunity to be involved in creating countless systems of
+
+22
+00:01:23.510 --> 00:01:26.120
+automation that have helped organizations
+
+23
+00:01:26.120 --> 00:01:29.510
+improve their overall ability to deliver software.
+
+24
+00:01:29.510 --> 00:01:34.685
+Some of my most exciting work has been around DevOps projects and talks that I've given
+
+25
+00:01:34.685 --> 00:01:37.100
+where I have described techniques around using
+
+26
+00:01:37.100 --> 00:01:40.570
+solutions like Docker, Jenkins, and Kubernetes.
+
+27
+00:01:40.570 --> 00:01:44.450
+This is because doing automation as scale is now more
+
+28
+00:01:44.450 --> 00:01:47.810
+than ever achievable for software development teams,
+
+29
+00:01:47.810 --> 00:01:51.110
+and continuous integration is at the heart of it.
+
+30
+00:01:51.110 --> 00:01:53.510
+In this course, we're going to go over
+
+31
+00:01:53.510 --> 00:01:57.800
+basic principles of using continuous integration systems effectively.
+
+32
+00:01:57.800 --> 00:02:02.885
+We're going to discuss the basic functions and purpose of a CI system.
+
+33
+00:02:02.885 --> 00:02:06.440
+We'll talk about the conversion of code to artifacts,
+
+34
+00:02:06.440 --> 00:02:11.180
+verification of code and systems to improve security.
+
+35
+00:02:11.180 --> 00:02:17.450
+We'll discuss how important DevOps principles of fast feedback, defining flow,
+
+36
+00:02:17.450 --> 00:02:20.375
+chunking work, and collaborative work within
+
+37
+00:02:20.375 --> 00:02:24.125
+automated feedback fit into continuous integration.
+
+38
+00:02:24.125 --> 00:02:29.765
+We'll go over how we can manage and organize our ability to produce reliable,
+
+39
+00:02:29.765 --> 00:02:32.420
+repeatable, and reusable builds.
+
+40
+00:02:32.420 --> 00:02:36.815
+We'll introduce the concept of webhooks and how we can leverage
+
+41
+00:02:36.815 --> 00:02:42.860
+other tools through APIs and other beans to work with continuous integration tools.
+
+42
+00:02:42.860 --> 00:02:45.770
+Using continuous integration solutions can
+
+43
+00:02:45.770 --> 00:02:48.260
+mean the difference between waiting minutes versus
+
+44
+00:02:48.260 --> 00:02:50.690
+hours for feedbacks on changes that
+
+45
+00:02:50.690 --> 00:02:54.575
+your software developers are making to your software asset.
+
+46
+00:02:54.575 --> 00:02:59.090
+You will learn about how continuous integration can provide
+
+47
+00:02:59.090 --> 00:03:00.650
+faster feedback loops and
+
+48
+00:03:00.650 --> 00:03:05.240
+higher understanding of changes that are being made to your software.
+
+49
+00:03:05.240 --> 00:03:08.900
+Above all, you will learn how continuous integration can
+
+50
+00:03:08.900 --> 00:03:12.199
+create confidence for your software development team,
+
+51
+00:03:12.199 --> 00:03:16.525
+empowering the team to deliver changes faster than ever before.
+
+52
+00:03:16.525 --> 00:03:18.690
+To accomplish all of this,
+
+53
+00:03:18.690 --> 00:03:20.990
+we'll also introduce you to one of
+
+54
+00:03:20.990 --> 00:03:25.490
+the more popular continuous integration platforms, Travis CI.
+
+55
+00:03:25.490 --> 00:03:30.800
+As you follow along in the video lessons and complete the activities,
+
+56
+00:03:30.800 --> 00:03:34.400
+you'll get your hands dirty with Travis CI directly,
+
+57
+00:03:34.400 --> 00:03:36.530
+applying the concepts you're learning in
+
+58
+00:03:36.530 --> 00:03:40.055
+our lessons together to solve real-world problems.
+
+59
+00:03:40.055 --> 00:03:43.340
+We're going to wrap this course with a project created
+
+60
+00:03:43.340 --> 00:03:47.690
+specifically to help learners use continuous integration techniques.
+
+61
+00:03:47.690 --> 00:03:51.560
+The exercise will test your skills obtained for working on
+
+62
+00:03:51.560 --> 00:03:56.430
+schedules for setting up execution events for push or nightly builds.
+
+63
+00:03:56.430 --> 00:04:02.090
+You will use Docker to automate some of our continuous integration steps that help verify
+
+64
+00:04:02.090 --> 00:04:04.699
+the exercise and achieve the configuration
+
+65
+00:04:04.699 --> 00:04:09.800
+needed to meet the requirements of the software project will provide.
+
+66
+00:04:09.800 --> 00:04:15.650
+You will solve some common error handling issues that will arise in the exercise,
+
+67
+00:04:15.650 --> 00:04:20.455
+and will secure sensitive information to avoid exposing your projects passwords.
+
+68
+00:04:20.455 --> 00:04:24.020
+Then, you will use flow control to achieve
+
+69
+00:04:24.020 --> 00:04:29.110
+verification of the software project we provide in this exercise.
+
+70
+00:04:29.110 --> 00:04:33.770
+Finally, you will publish finished artifacts as a part of the
+
+71
+00:04:33.770 --> 00:04:38.030
+hand-off for continuous delivery and demonstrate how the traceability
+
+72
+00:04:38.030 --> 00:04:41.855
+and notifications were set up for creating collaboration
+
+73
+00:04:41.855 --> 00:04:47.090
+needed to help achieve traceability and notifications for your team.
+
+74
+00:04:47.090 --> 00:04:51.020
+Of course, continuous integration is just one part of
+
+75
+00:04:51.020 --> 00:04:55.630
+approaching development effectively utilizing DevOps principles.
+
+76
+00:04:55.630 --> 00:04:58.120
+If you want to learn even more,
+
+77
+00:04:58.120 --> 00:05:00.080
+I encourage you to check out
+
+78
+00:05:00.080 --> 00:05:04.895
+the entire UC Davis DevOps specialization if you haven't already.
+
+79
+00:05:04.895 --> 00:05:08.350
+This course is a part of the specialization,
+
+80
+00:05:08.350 --> 00:05:14.500
+and my colleagues have done an excellent job of covering the many facets of DevOps.
+
+81
+00:05:14.500 --> 00:05:16.335
+Before taking this course,
+
+82
+00:05:16.335 --> 00:05:19.460
+you should already know at least one programming language.
+
+83
+00:05:19.460 --> 00:05:21.800
+It doesn't really matter what language,
+
+84
+00:05:21.800 --> 00:05:23.990
+just that you're comfortable using one,
+
+85
+00:05:23.990 --> 00:05:26.610
+and you should be familiar with
+
+86
+00:05:26.610 --> 00:05:31.805
+basic programming of code and using a shell prompts such as Bash.
+
+87
+00:05:31.805 --> 00:05:35.420
+You'll also need to have an account set up on GitHub and
+
+88
+00:05:35.420 --> 00:05:39.980
+Travis CI to perform most of the exercises in this course.
+
+89
+00:05:39.980 --> 00:05:42.720
+Both services are available for free,
+
+90
+00:05:42.720 --> 00:05:45.830
+and students can also apply for additional freebies through
+
+91
+00:05:45.830 --> 00:05:48.380
+GitHub's Student Developer Pack at
+
+92
+00:05:48.380 --> 00:05:52.550
+the education GitHub link we've provided in this video.
+
+93
+00:05:52.550 --> 00:05:55.910
+Use the link to set up your GitHub account and
+
+94
+00:05:55.910 --> 00:05:59.315
+Travis account if you have not already done so.
+
+95
+00:05:59.315 --> 00:06:06.535
+Similarly, you can find Travis CI at travis-ci.org.
+
+96
+00:06:06.535 --> 00:06:11.000
+As a developer, you should also have access to a text editor
+
+97
+00:06:11.000 --> 00:06:15.409
+for software development such as the Atom IDE available
+
+98
+00:06:15.409 --> 00:06:24.715
+on atom.io or Visual Studio IDE available at visualstudio.microsoft.com.
+
+99
+00:06:24.715 --> 00:06:28.850
+You will also want to install the latest version of Docker for
+
+100
+00:06:28.850 --> 00:06:35.520
+your operating system available at docs.docker.com/install.
+
+101
+00:06:39.600 --> 00:06:45.130
+We will be publishing some Docker images in some of our exercises.
+
+102
+00:06:45.130 --> 00:06:49.000
+So, it's highly recommended that you set up a free account
+
+103
+00:06:49.000 --> 00:06:54.805
+for Docker's public registry at hub.docker.com.
+
+104
+00:06:54.805 --> 00:06:58.000
+All of these links I've mentioned are available on the
+
+105
+00:06:58.000 --> 00:07:01.495
+Getting Started page in this introductory module.
+
+106
+00:07:01.495 --> 00:07:04.660
+In order to be successful in this course,
+
+107
+00:07:04.660 --> 00:07:10.135
+I highly encourage you to watch and do everything in the order its presented.
+
+108
+00:07:10.135 --> 00:07:15.065
+Most of the concepts I discuss build upon one another,
+
+109
+00:07:15.065 --> 00:07:17.560
+and so it's a good idea to have
+
+110
+00:07:17.560 --> 00:07:22.765
+a firm grasp of one topic before moving on to the next topic.
+
+111
+00:07:22.765 --> 00:07:25.215
+All right. Once again, welcome.
+
+112
+00:07:25.215 --> 00:07:27.425
+I'm really excited about this course,
+
+113
+00:07:27.425 --> 00:07:29.000
+and I'm glad you've joined me,
+
+114
+00:07:29.000 --> 00:07:33.780
+because we're going to learn a lot together. Let's get started.
